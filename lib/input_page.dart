@@ -21,6 +21,17 @@ class _InputPageState extends State<InputPage> {
   // no gender as i am unable to make it empty or null variable.
   Genders selectedGender = Genders.noGender;
   int height = 180;
+  int weight = 70;
+  int age = 20;
+
+  int increment(int n) {
+    return n + 1;
+  }
+
+  int decrement(int n) {
+    return n - 1;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,7 +99,7 @@ class _InputPageState extends State<InputPage> {
                         icon: FontAwesomeIcons.minus,
                         onPress: () {
                           setState(() {
-                            height--;
+                            height = decrement(height);
                           });
                         },
                       ),
@@ -110,7 +121,7 @@ class _InputPageState extends State<InputPage> {
                         icon: FontAwesomeIcons.plus,
                         onPress: () {
                           setState(() {
-                            height++;
+                            height = increment(height);
                           });
                         },
                       ),
@@ -146,10 +157,86 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: ReusableCard(cardBGColor: kActiveCardColor),
+                  child: ReusableCard(
+                    cardBGColor: kActiveCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "WEIGHT",
+                          style: kDisplayStyle,
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: kNumberStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ReuseableButton(
+                                icon: FontAwesomeIcons.minus,
+                                onPress: () {
+                                  setState(() {
+                                    weight = decrement(weight);
+                                  });
+                                }),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            ReuseableButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPress: () {
+                                setState(() {
+                                  weight = increment(weight);
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
                 Expanded(
-                  child: ReusableCard(cardBGColor: kActiveCardColor),
+                  child: ReusableCard(
+                    cardBGColor: kActiveCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "AGE",
+                          style: kDisplayStyle,
+                        ),
+                        Text(
+                          age.toString(),
+                          style: kNumberStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ReuseableButton(
+                                icon: FontAwesomeIcons.minus,
+                                onPress: () {
+                                  setState(() {
+                                    age = decrement(age);
+                                  });
+                                }),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            ReuseableButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPress: () {
+                                setState(() {
+                                  age = increment(age);
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
