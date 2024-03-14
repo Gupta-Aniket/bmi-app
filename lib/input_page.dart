@@ -60,7 +60,7 @@ class _InputPageState extends State<InputPage> {
                       displayText: "MALE",
                     ),
                   ),
-                ),
+                ), // Male
                 Expanded(
                   child: ReusableCard(
                     onPress: () {
@@ -76,10 +76,10 @@ class _InputPageState extends State<InputPage> {
                       displayText: "FEMALE",
                     ),
                   ),
-                ),
+                ), // Female
               ],
             ),
-          ),
+          ), //Gender Selection
           Expanded(
             child: ReusableCard(
               cardBGColor: kActiveCardColor,
@@ -99,11 +99,11 @@ class _InputPageState extends State<InputPage> {
                         icon: FontAwesomeIcons.minus,
                         onPress: () {
                           setState(() {
-                            height = decrement(height);
+                            if (height > 101) height = decrement(height);
                           });
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 40.0,
                       ),
                       Text(
@@ -114,14 +114,14 @@ class _InputPageState extends State<InputPage> {
                         " cm",
                         style: kDisplayStyle,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 20.0,
                       ),
                       ReuseableButton(
                         icon: FontAwesomeIcons.plus,
                         onPress: () {
                           setState(() {
-                            height = increment(height);
+                            if (height < 299) height = increment(height);
                           });
                         },
                       ),
@@ -131,11 +131,11 @@ class _InputPageState extends State<InputPage> {
                     data: SliderTheme.of(context).copyWith(
                       activeTrackColor: Colors.white70,
                       thumbColor: kBottomCalcColor,
-                      overlayColor: Color(0x29EB1555),
+                      overlayColor: const Color(0x29EB1555),
                       thumbShape:
-                          RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                          const RoundSliderThumbShape(enabledThumbRadius: 15.0),
                       overlayShape:
-                          RoundSliderOverlayShape(overlayRadius: 30.0),
+                          const RoundSliderOverlayShape(overlayRadius: 30.0),
                       trackHeight: 2.0,
                     ),
                     child: Slider(
@@ -152,7 +152,7 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
-          ),
+          ), //Height
           Expanded(
             child: Row(
               children: [
@@ -162,7 +162,7 @@ class _InputPageState extends State<InputPage> {
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           "WEIGHT",
                           style: kDisplayStyle,
                         ),
@@ -177,7 +177,7 @@ class _InputPageState extends State<InputPage> {
                                 icon: FontAwesomeIcons.minus,
                                 onPress: () {
                                   setState(() {
-                                    weight = decrement(weight);
+                                    if (weight >= 1) weight = decrement(weight);
                                   });
                                 }),
                             const SizedBox(
@@ -196,14 +196,14 @@ class _InputPageState extends State<InputPage> {
                       ],
                     ),
                   ),
-                ),
+                ), // Weight
                 Expanded(
                   child: ReusableCard(
                     cardBGColor: kActiveCardColor,
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           "AGE",
                           style: kDisplayStyle,
                         ),
@@ -218,7 +218,8 @@ class _InputPageState extends State<InputPage> {
                                 icon: FontAwesomeIcons.minus,
                                 onPress: () {
                                   setState(() {
-                                    age = decrement(age);
+                                    if (age > 1 && age < 100)
+                                      age = decrement(age);
                                   });
                                 }),
                             const SizedBox(
@@ -228,7 +229,7 @@ class _InputPageState extends State<InputPage> {
                               icon: FontAwesomeIcons.plus,
                               onPress: () {
                                 setState(() {
-                                  age = increment(age);
+                                  if (age > 0 && age < 99) age = increment(age);
                                 });
                               },
                             ),
@@ -237,19 +238,27 @@ class _InputPageState extends State<InputPage> {
                       ],
                     ),
                   ),
-                ),
+                ), //Age
               ],
             ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              color: kBottomCalcColor,
-              borderRadius: BorderRadius.circular(10),
+          ), // Weight and Age
+          GestureDetector(
+            child: Container(
+              decoration: BoxDecoration(
+                color: kBottomCalcColor,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              margin: const EdgeInsets.only(top: 10.0),
+              height: kBottomCalcHeight,
+              width: double.infinity,
+              child: const Center(
+                child: Text(
+                  "CALCULATE YOUR BMI",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ),
             ),
-            margin: EdgeInsets.only(top: 10.0),
-            height: kBottomCalcHeight,
-            width: double.infinity,
-          ),
+          ), // bottom calculator button
         ],
       ),
     );
