@@ -267,7 +267,12 @@ class _InputPageState extends State<InputPage> {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return ResultPage();
+                      return ResultPage(
+                        height: height,
+                        age: age,
+                        weight: weight,
+                        gender: selectedGender.toString(),
+                      );
                     },
                   ),
                 );
