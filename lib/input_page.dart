@@ -1,15 +1,17 @@
+import 'package:bmi_app/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'reusable_card_data.dart';
 import 'reusable_card.dart';
 import 'constants.dart';
 import 'reusableButton.dart';
-
+import 'reusable_bottom_calculate_button.dart';
 //enums follow the Class naming convention, and they cannot be declared inside a class.
+
 enum Genders {
-  noGender,
   male,
   female,
+  noGender,
 }
 
 class InputPage extends StatefulWidget {
@@ -20,10 +22,7 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   // no gender as i am unable to make it empty or null variable.
   Genders selectedGender = Genders.noGender;
-  int height = 180;
-  int weight = 70;
-  int age = 20;
-
+  int age = 20, weight = 70, height = 180;
   int increment(int n) {
     return n + 1;
   }
@@ -242,23 +241,40 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ), // Weight and Age
-          GestureDetector(
-            child: Container(
-              decoration: BoxDecoration(
-                color: kBottomCalcColor,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              margin: const EdgeInsets.only(top: 10.0),
-              height: kBottomCalcHeight,
-              width: double.infinity,
-              child: const Center(
-                child: Text(
-                  "CALCULATE YOUR BMI",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-          ), // bottom calculator button
+          BottomCalculateButton(
+            onTap: () {
+              if (selectedGender == Genders.noGender) {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: const Text('Choose Gender'),
+                      content:
+                          const Text('Please Select a Gender to continue!'),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop(); // Close the dialog
+                          },
+                          child: const Text('Close'),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              } else {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ResultPage();
+                    },
+                  ),
+                );
+              }
+            },
+            innerText: "Calculate your BMI",
+          ),
         ],
       ),
     );

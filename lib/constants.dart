@@ -14,3 +14,15 @@ const TextStyle kNumberStyle = TextStyle(
   fontSize: 50.0,
   fontWeight: FontWeight.w900,
 );
+
+const TextStyle kResultTextStyle = TextStyle(
+  fontSize: 24.0,
+  color: Color(0xff41ff0c),
+  fontWeight: FontWeight.bold,
+);
+
+const TextStyle kBottomCalculateButtonTextStyle = TextStyle(
+  fontSize: 20,
+  fontWeight: FontWeight.bold,
+  letterSpacing: 1.3,
+);
