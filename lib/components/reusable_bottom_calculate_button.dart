@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'result_page.dart';
-import 'constants.dart';
+import 'package:bmi_app/screens/result_page.dart';
+import 'package:bmi_app/constants.dart';
 
 class BottomCalculateButton extends StatelessWidget {
   VoidCallback onTap;

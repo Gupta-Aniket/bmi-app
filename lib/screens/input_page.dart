@@ -1,11 +1,11 @@
-import 'package:bmi_app/result_page.dart';
+import 'package:bmi_app/screens/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'reusable_card_data.dart';
-import 'reusable_card.dart';
-import 'constants.dart';
-import 'reusableButton.dart';
-import 'reusable_bottom_calculate_button.dart';
+import '../components/reusable_card_data.dart';
+import 'package:bmi_app/components/reusable_card.dart';
+import 'package:bmi_app/constants.dart';
+import 'package:bmi_app/components/reusableButton.dart';
+import 'package:bmi_app/components/reusable_bottom_calculate_button.dart';
 //enums follow the Class naming convention, and they cannot be declared inside a class.
 
 enum Genders {

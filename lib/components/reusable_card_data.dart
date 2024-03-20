@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'constants.dart';
+import '../constants.dart';
 
 class reuseableCardData extends StatelessWidget {
   IconData displayIcon = FontAwesomeIcons.mars;

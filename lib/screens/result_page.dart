@@ -2,9 +2,9 @@ import 'package:bmi_app/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
-import 'reusable_bottom_calculate_button.dart';
-import 'input_page.dart';
-import 'reusable_card.dart';
+import 'package:bmi_app/components/reusable_bottom_calculate_button.dart';
+import 'package:bmi_app/screens/input_page.dart';
+import 'package:bmi_app/components/reusable_card.dart';
 
 class ResultPage extends StatelessWidget {
   int height, weight, age;
@@ -64,9 +64,13 @@ class ResultPage extends StatelessWidget {
 
   Widget build(BuildContext context) {
     if (gender == "Genders.male") {
-      img = Image.asset("assets/male.png");
+      img = Image.asset(
+        "assets/male.png",
+      );
     } else {
-      img = Image.asset("assets/female.png");
+      img = Image.asset(
+        "assets/female.png",
+      );
     }
 
     double bmi = (weight * 10000) / (height * height);
@@ -99,18 +103,23 @@ class ResultPage extends StatelessWidget {
                         min: 10,
                         max: 50,
                         initialValue: bmi,
+                        innerWidget: null,
                         appearance: CircularSliderAppearance(
                           animDurationMultiplier: 2,
                           size: 300, // Adjust the size here
                           startAngle: 135,
                           angleRange: 270,
-
                           customColors: CustomSliderColors(
+                            dotColor: Colors.transparent,
+                            hideShadow: true,
+                            gradientStartAngle: 0,
+                            gradientEndAngle: 180,
                             progressBarColors: [
-                              kBottomCalcColor,
+                              Colors.red,
+                              Colors.orangeAccent,
                               Colors.green,
                             ],
-                            trackColor: Color(0xff6CE5E7),
+                            trackColor: const Color(0xff6CE5E7),
                           ),
                         ),
                       ),
