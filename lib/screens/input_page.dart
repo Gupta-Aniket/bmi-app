@@ -269,7 +269,6 @@ class _InputPageState extends State<InputPage> {
                     builder: (context) {
                       return ResultPage(
                         height: height,
-                        age: age,
                         weight: weight,
                         gender: selectedGender.toString(),
                       );
